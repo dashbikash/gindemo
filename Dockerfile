@@ -1,12 +1,16 @@
 FROM golang:alpine3.15
 
 WORKDIR /app
-COPY . /app
-RUN go install
 
-ENV GIN_MODE=release
+COPY go.mod ./
+COPY go.sum ./
+COPY *.go ./
+
+RUN go mod download
+
+RUN go build -o /go-app
+
 ENV APP_PORT=3030
-
 EXPOSE 3030
-CMD go build -o bin/app
-ENTRYPOINT ["bin/app" ]
+
+CMD [ "/go-app" ]
