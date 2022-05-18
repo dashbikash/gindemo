@@ -1,7 +1,9 @@
 package main
 
 import (
-  "os"
+	"main/handler"
+	"os"
+
 	"github.com/gin-gonic/gin"
 )
 
@@ -16,6 +18,14 @@ func main() {
 	router.GET("/", func(c *gin.Context) {
 		c.String(200, "Welcome to Go and Gin!")
 	})
+  // Simple group: v1
+	crud := router.Group("/crud")
+	{
+		crud.GET("/", handler.Get)
+		crud.POST("/", handler.Post)
+		crud.PUT("/", handler.Put)
+    crud.DELETE("/", handler.Delete)
+	}
 
   configServer()
 	router.Run(APP_HOST+":"+APP_PORT)

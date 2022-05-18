@@ -8,9 +8,10 @@ COPY *.go ./
 
 RUN go mod download
 
-RUN go build -o /go-app
+RUN go build -o /bin/go-app
+
 
 ENV APP_PORT=3030
 EXPOSE 3030
 
-CMD [ "/go-app" ]
+CMD [ "/bin/go-app" ]
