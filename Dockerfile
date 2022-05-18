@@ -9,4 +9,4 @@ ENV APP_PORT=3030
 
 EXPOSE 3030
 CMD go build -o bin/app
-ENTRYPOINT ["./bin/app" ]
+ENTRYPOINT ["bin/app" ]
