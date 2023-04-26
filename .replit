@@ -8,4 +8,4 @@ pattern = "**/*.go"
 start = "gopls"
 
 [nix]
-channel = "stable-21_11"
+channel = "stable-22_11"
